@@ -6,19 +6,25 @@ var linearDamp = 3
 var targetPosition = Vector2(0, 0)
 var approachBackoff = 200
 var mouseIsDown = false
+var bodyType = 'bubble'
+var finished = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_linear_damp(linearDamp)
 
-#
+# Track the mouse when it is pressed
 func _input(event):
+	if finished:
+		return
 	if event is InputEventMouseButton:
 		mouseIsDown = event.pressed
 		targetPosition = get_global_mouse_position()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+# Move towards target position
+func _process(_delta):
+	if finished:
+		return
 	if (mouseIsDown):
 		targetPosition = get_global_mouse_position()		
 	var vector = (targetPosition - position).normalized()
@@ -26,3 +32,6 @@ func _process(delta):
 	var throttledAcceleration = acceleration * min(dist, approachBackoff) / approachBackoff
 	var impulse = vector * throttledAcceleration
 	apply_central_impulse(impulse)
+	
+func finish():
+	finished = true
