@@ -6,3 +6,4 @@ func _ready():
 
 func on_bubble_finished(bubble: RigidBody2D):
 	bubble.finish()
+	get_tree().reload_current_scene()
