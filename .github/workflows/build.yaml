@@ -1,0 +1,16 @@
+name: Build
+on: [push]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check Out
+        uses: actions/checkout@v2
+      
+      - name: Build Godot Project
+        uses: josephbmanley/build-godot-action@master
+        with:
+          name: bubble-racing
+          preset: HTML5
