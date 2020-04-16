@@ -7,7 +7,7 @@ jobs:
     steps:
 
       - name: Install Deps
-        run: sudo apt-get install libpulse0:i386
+        run: sudo apt-get install pulseaudio
 
       - name: Check Out
         uses: actions/checkout@v2
