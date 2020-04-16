@@ -6,6 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Install Deps
+        run: sudo apt-get install libpulse0:i386
+
       - name: Check Out
         uses: actions/checkout@v2
       
