@@ -1,5 +1,7 @@
 name: Build and Publish
-on: [push]
+push:
+  branches:
+    - master
 jobs:
   build:
     name: Build and Publish
@@ -27,7 +29,9 @@ jobs:
         env:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
         run: >
+          echo $PWD
+          ls -larght home/runner/.local/share/godot/dist
           curl -H "Content-Type: application/zip"
           -H "Authorization: Bearer $NETLIFY_TOKEN"
           --data-binary "@/home/runner/.local/share/godot/dist/HTML5.zip"
-          https://api.netlify.com/api/v1/sites
+          https://api.netlify.com/api/v1/sites/bubble-racing.netlify.app/deploys
