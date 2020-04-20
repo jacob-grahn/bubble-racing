@@ -1,8 +1,8 @@
-name: Build
+name: Build and Publish
 on: [push]
 jobs:
   build:
-    name: Build
+    name: Build and Publish
     runs-on: ubuntu-latest
     steps:
 
@@ -12,7 +12,7 @@ jobs:
       - name: Check Out
         uses: actions/checkout@v2
       
-      - name: export game
+      - name: Build
         uses: firebelley/godot-export@v1.2.0
         with:
           godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.2.1/Godot_v3.2.1-stable_linux_headless.64.zip
@@ -27,6 +27,7 @@ jobs:
         env:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
         run: >
-          -H "Authorization: Bearer $NETLIFY_TOKEN" \
-          --data-binary "@/home/runner/.local/share/godot/dist/HTML5.zip" \
+          curl -H "Content-Type: application/zip"
+          -H "Authorization: Bearer $NETLIFY_TOKEN"
+          --data-binary "@/home/runner/.local/share/godot/dist/HTML5.zip"
           https://api.netlify.com/api/v1/sites
