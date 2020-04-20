@@ -24,7 +24,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish
-        uses: netlify/actions/build@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NETLIFY_DIR: /home/runner/.local/share/godot/builds/0/
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+        run: >
+          -H "Authorization: Bearer $NETLIFY_TOKEN" \
+          --data-binary "@/home/runner/.local/share/godot/dist/HTML5.zip" \
+          https://api.netlify.com/api/v1/sites
