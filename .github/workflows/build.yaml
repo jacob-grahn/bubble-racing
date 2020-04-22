@@ -30,8 +30,8 @@ jobs:
         env:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
         run: >
-          echo $PWD
-          ls -larght home/runner/.local/share/godot/dist
+          echo $PWD && 
+          ls -larght home/runner/.local/share/godot/dist && 
           curl -H "Content-Type: application/zip"
           -H "Authorization: Bearer $NETLIFY_TOKEN"
           --data-binary "@/home/runner/.local/share/godot/dist/HTML5.zip"
