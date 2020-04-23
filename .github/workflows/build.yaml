@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-        dev
+      - dev
 jobs:
   build:
     name: Build and Publish
@@ -43,4 +43,3 @@ jobs:
             -H "Authorization: Bearer $NETLIFY_TOKEN" \
             --data-binary "@exports/HTML5.zip" \
             https://api.netlify.com/api/v1/sites/$site_id/deploys
-            
