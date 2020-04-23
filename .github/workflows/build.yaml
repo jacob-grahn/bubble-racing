@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+        dev
 jobs:
   build:
     name: Build and Publish
@@ -29,9 +30,16 @@ jobs:
       - name: Publish
         env:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
-        run: >
-          curl
-          -H "Content-Type: application/zip"
-          -H "Authorization: Bearer $NETLIFY_TOKEN"
-          --data-binary "@exports/HTML5.zip"
-          https://api.netlify.com/api/v1/sites/bubble-racing.netlify.app/deploys
+          REF: ${{ github.ref }}
+        run: |
+          if [ $REF == 'refs/heads/master' ]
+          then
+              site_id = bubble-racing.netlify.app
+          else
+              site_id = dev-bubble-racing.netlify.app
+          fi
+          curl \
+            -H "Content-Type: application/zip" \
+            -H "Authorization: Bearer $NETLIFY_TOKEN" \
+            --data-binary "@exports/HTML5.zip" \
+            https://api.netlify.com/api/v1/sites/$site_id/deploys
