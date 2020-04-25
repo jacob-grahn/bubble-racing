@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - dev
 jobs:
   build:
     name: Build and Publish
@@ -10,7 +11,9 @@ jobs:
     steps:
 
       - name: Install Deps
-        run: sudo apt-get install pulseaudio
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install pulseaudio -y
 
       - name: Check Out
         uses: actions/checkout@v2
@@ -29,9 +32,17 @@ jobs:
       - name: Publish
         env:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
-        run: >
-          curl
-          -H "Content-Type: application/zip"
-          -H "Authorization: Bearer $NETLIFY_TOKEN"
-          --data-binary "@exports/HTML5.zip"
-          https://api.netlify.com/api/v1/sites/bubble-racing.netlify.app/deploys
+          REF: ${{ github.ref }}
+        run: |
+          if [ $REF == 'refs/heads/master' ]
+          then
+              site_id=bubble-racing.netlify.app
+          else
+              site_id=dev-bubble-racing.netlify.app
+          fi
+          curl \
+            -H "Content-Type: application/zip" \
+            -H "Authorization: Bearer $NETLIFY_TOKEN" \
+            --data-binary "@exports/HTML5.zip" \
+            -f \
+            https://api.netlify.com/api/v1/sites/$site_id/deploys
