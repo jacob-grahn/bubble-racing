@@ -36,9 +36,9 @@ jobs:
         run: |
           if [ $REF == 'refs/heads/master' ]
           then
-              site_id = bubble-racing.netlify.app
+              site_id=bubble-racing.netlify.app
           else
-              site_id = dev-bubble-racing.netlify.app
+              site_id=dev-bubble-racing.netlify.app
           fi
           curl \
             -H "Content-Type: application/zip" \
