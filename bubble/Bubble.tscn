@@ -10,7 +10,6 @@ mode = 2
 gravity_scale = 0.0
 
 [node name="Light2D" type="Light2D" parent="."]
-scale = Vector2( 0.676, 0.676 )
 texture = ExtResource( 2 )
 color = Color( 1, 0.964706, 0.894118, 1 )
 energy = 1.25
