@@ -12,6 +12,7 @@ var finished = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_linear_damp(linearDamp)
+	targetPosition = position
 
 # Track the mouse when it is pressed
 func _input(event):
