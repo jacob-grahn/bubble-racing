@@ -6,6 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="RigidBody2D" type="RigidBody2D"]
+gravity_scale = 0.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.2, 0.2 )
@@ -15,16 +16,18 @@ texture = ExtResource( 1 )
 scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-current = true
-smoothing_enabled = true
-
 [node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -1.54972e-05, -0.999986 )
+scale = Vector2( 0.676, 0.676 )
 texture = ExtResource( 2 )
 color = Color( 1, 0.964706, 0.894118, 1 )
+energy = 1.25
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
-shadow_gradient_length = 10.0
+shadow_gradient_length = 2.0
 shadow_filter = 2
-shadow_filter_smooth = 20.0
+shadow_filter_smooth = 10.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true

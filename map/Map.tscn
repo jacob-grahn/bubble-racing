@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://bubble/Bubble.tscn" type="PackedScene" id=1]
 [ext_resource path="res://bubble/Bubble.gd" type="Script" id=2]
@@ -8,16 +8,20 @@
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://map/light_shadow_background.png" type="Texture" id=7]
 
-[sub_resource type="PhysicsMaterial" id=1]
-bounce = 0.66
-
 [node name="Map" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="Bubble" parent="." instance=ExtResource( 1 )]
-position = Vector2( 100, 100 )
-physics_material_override = SubResource( 1 )
-gravity_scale = 0.0
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="BobBubble" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1546.41, 708.24 )
+
+[node name="OtherBubble" parent="." instance=ExtResource( 1 )]
+position = Vector2( 606.666, 499.8 )
+
+[node name="PlayerBubble" parent="." instance=ExtResource( 1 )]
+position = Vector2( 198.278, 33.0701 )
 script = ExtResource( 2 )
 
 [node name="Box" parent="." instance=ExtResource( 3 )]
@@ -84,8 +88,11 @@ position = Vector2( 0, 0 )
 rotation = 1.5708
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1207.41, 541.03 )
+modulate = Color( 0.027451, 0.737255, 0.956863, 1 )
+position = Vector2( 113.993, 99.7651 )
 rotation = 1.5708
-scale = Vector2( 2.35256, 5.0247 )
+scale = Vector2( 100, 100 )
 z_index = -1
+z_as_relative = false
 texture = ExtResource( 7 )
+region_filter_clip = true
