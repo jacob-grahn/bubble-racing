@@ -1,6 +1,8 @@
 extends Node2D
 
 func _ready():
+	var maze = MazeGenerator.generate(10, 10)
+	print(maze)
 	$Finish.connect("bubble_finished", self, "on_bubble_finished")
 	$Finish2.connect("bubble_finished", self, "on_bubble_finished")
 
