@@ -88,6 +88,7 @@ position = Vector2( 0, 0 )
 rotation = 1.5708
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 modulate = Color( 0.027451, 0.737255, 0.956863, 1 )
 position = Vector2( 113.993, 99.7651 )
 rotation = 1.5708
