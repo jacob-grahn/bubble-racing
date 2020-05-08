@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="bubble-racing"
-run/main_scene="res://map/Map.tscn"
+run/main_scene="res://maze/Maze.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+MazeGenerator="*res://maze-generator/MazeGenerator.gd"
 
 [display]
 
