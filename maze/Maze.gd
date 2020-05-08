@@ -2,8 +2,9 @@ extends Node2D
 
 var Box = preload("../box/Box.tscn")
 var TileMap = preload("./TileMap.gd")
-var boxWidth = 100
-var boxScale = 1
+var Finish = preload("../finish/Finish.tscn")
+var boxScale = 2
+var boxWidth = 100 * boxScale
 var nodeWidth = boxWidth * 3
 var map = TileMap.new()
 
@@ -17,7 +18,26 @@ func _ready():
 	for node in maze:
 		draw_node(node)
 		
-	$Bubble.position = Vector2(300, 2900)
+	$Bubble.position = Vector2(300, 5800)
+	
+	var finish = Finish.instance()
+	finish.scale = Vector2(4, 4)
+	finish.position = Vector2(5 * boxWidth, 0 * boxWidth)
+	finish.connect("bubble_finished", self, "on_bubble_finished")
+	add_child(finish)
+
+
+func on_bubble_finished(bubble: RigidBody2D):
+	bubble.finish()
+	get_tree().reload_current_scene()
+	
+	
+func _process(_delta):
+	var bottom = 6000
+	# var top = 0
+	var y = $Bubble.position.y
+	var brightness = 1 - (y / bottom)
+	$CanvasModulate.set_color(Color(brightness, brightness, brightness))
 
 
 func draw_box(x, y):
@@ -25,7 +45,6 @@ func draw_box(x, y):
 	var right = 1 if map.getTile(x + 1, y) else 0
 	var bottom = 1 if map.getTile(x, y + 1) else 0
 	var left = 1 if map.getTile(x - 1, y) else 0
-	# var neighbor_count = top + right + bottom + left
 	if (!top and !bottom) or (!right and !left):
 		var box = Box.instance()
 		box.scale = Vector2(boxScale, boxScale)
