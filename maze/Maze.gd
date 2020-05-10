@@ -37,7 +37,7 @@ func _process(_delta):
 	# var top = 0
 	var y = $Bubble.position.y
 	var brightness = 1 - (y / bottom)
-	$CanvasModulate.set_color(Color(brightness, brightness, brightness))
+	# $CanvasModulate.set_color(Color(brightness, brightness, brightness))
 
 
 func draw_box(x, y):
