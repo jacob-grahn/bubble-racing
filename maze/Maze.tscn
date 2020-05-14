@@ -17,3 +17,6 @@ texture = ExtResource( 4 )
 [node name="Bubble" parent="." instance=ExtResource( 2 )]
 position = Vector2( 334.707, 308.827 )
 script = ExtResource( 3 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.196078, 0.196078, 0.196078, 1 )
