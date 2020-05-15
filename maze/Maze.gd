@@ -10,6 +10,7 @@ var map = TileMap.new()
 
 
 func _ready():
+	# create random maze
 	randomize()
 	
 	var maze = MazeGenerator.generate(10, 10)
@@ -17,12 +18,15 @@ func _ready():
 	
 	for node in maze:
 		draw_node(node)
-		
-	$Bubble.position = Vector2(300, 5800)
 	
+	# add player bubble
+	$Bubble.position = Vector2(300, 5600)
+	$Bubble.targetPosition = $Bubble.position
+	
+	# add finish
 	var finish = Finish.instance()
 	finish.scale = Vector2(4, 4)
-	finish.position = Vector2(5 * boxWidth, 0 * boxWidth)
+	finish.position = Vector2(16 * boxWidth, 0 * boxWidth)
 	finish.connect("bubble_finished", self, "on_bubble_finished")
 	add_child(finish)
 
@@ -33,11 +37,12 @@ func on_bubble_finished(bubble: RigidBody2D):
 	
 	
 func _process(_delta):
-	var bottom = 6000
+	var bottom = 5600
 	# var top = 0
 	var y = $Bubble.position.y
 	var brightness = 1 - (y / bottom)
-	$CanvasModulate.set_color(Color(brightness, brightness, brightness))
+	$WallModulate.set_color(Color(brightness, brightness, brightness))
+	$ParallaxBackground/BGModulate.set_color(Color(brightness, brightness, brightness))
 
 
 func draw_box(x, y):
