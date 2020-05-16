@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://maze/Maze.gd" type="Script" id=1]
 [ext_resource path="res://bubble/Bubble.tscn" type="PackedScene" id=2]
 [ext_resource path="res://bubble/Bubble.gd" type="Script" id=3]
 [ext_resource path="res://ocean-bg.png" type="Texture" id=4]
+[ext_resource path="res://maze/BeatBoxer.gd" type="Script" id=5]
+[ext_resource path="res://blue-sky.ogg" type="AudioStream" id=6]
 
 [node name="Maze" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,7 +17,7 @@ color = Color( 0.196078, 0.196078, 0.196078, 1 )
 scroll_ignore_camera_zoom = true
 
 [node name="Background" type="Sprite" parent="ParallaxBackground"]
-position = Vector2( 450, 450 )
+position = Vector2( 400, 500 )
 texture = ExtResource( 4 )
 
 [node name="BGModulate" type="CanvasModulate" parent="ParallaxBackground"]
@@ -23,3 +25,9 @@ texture = ExtResource( 4 )
 [node name="Bubble" parent="." instance=ExtResource( 2 )]
 position = Vector2( -0.465363, -0.562927 )
 script = ExtResource( 3 )
+
+[node name="BeatBoxer" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )

@@ -27,12 +27,21 @@ func _process(_delta):
 	if finished:
 		return
 	if (mouseIsDown):
-		targetPosition = get_global_mouse_position()		
+		targetPosition = get_global_mouse_position()
 	var vector = (targetPosition - position).normalized()
 	var dist = targetPosition.distance_to(position)
 	var throttledAcceleration = acceleration * min(dist, approachBackoff) / approachBackoff
 	var impulse = vector * throttledAcceleration
 	apply_central_impulse(impulse)
+	beat_light()
+	
+
+func beat_light():
+	var lightScale = 1 + (get_node("../BeatBoxer").loudness * .005)
+	var bubbleScale = 1 + (get_node("../BeatBoxer").loudness * .001)
+	$Light2D.set_scale(Vector2(lightScale, lightScale))
+	$Sprite.set_scale(Vector2(bubbleScale, bubbleScale))
+	
 	
 func finish():
 	finished = true
