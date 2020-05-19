@@ -26,8 +26,8 @@ func _input(event):
 func _process(_delta):
 	if finished:
 		return
-	if (mouseIsDown):
-		targetPosition = get_global_mouse_position()
+	# if (mouseIsDown):
+	targetPosition = get_global_mouse_position()
 	var vector = (targetPosition - position).normalized()
 	var dist = targetPosition.distance_to(position)
 	var throttledAcceleration = acceleration * min(dist, approachBackoff) / approachBackoff

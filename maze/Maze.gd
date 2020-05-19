@@ -7,26 +7,30 @@ var boxScale = 2
 var boxWidth = 100 * boxScale
 var nodeWidth = boxWidth * 3
 var map = TileMap.new()
+var mazeWidth = 5
+var mazeHeight = 5
 
 
 func _ready():
 	# create random maze
 	randomize()
 	
-	var maze = MazeGenerator.generate(10, 10)
+	var maze = MazeGenerator.generate(mazeWidth, mazeHeight)
 	maze.shuffle()
 	
 	for node in maze:
 		draw_node(node)
 	
 	# add player bubble
-	$Bubble.position = Vector2(300, 5600)
+	var startX = floor(mazeWidth / 2) * boxWidth * 3
+	var startY = (mazeHeight * boxWidth * 3) - (boxWidth * 2)
+	$Bubble.position = Vector2(startX, startY)
 	$Bubble.targetPosition = $Bubble.position
 	
 	# add finish
 	var finish = Finish.instance()
 	finish.scale = Vector2(4, 4)
-	finish.position = Vector2(16 * boxWidth, 0 * boxWidth)
+	finish.position = Vector2(startX + boxWidth, 0)
 	finish.connect("bubble_finished", self, "on_bubble_finished")
 	add_child(finish)
 
@@ -37,7 +41,7 @@ func on_bubble_finished(bubble: RigidBody2D):
 	
 	
 func _process(_delta):
-	var bottom = 5600
+	var bottom = mazeHeight * boxWidth * 3
 	# var top = 0
 	var y = $Bubble.position.y
 	var brightness = 1 - (y / bottom)
@@ -77,7 +81,7 @@ func draw_node(node):
 			left = true
 	
 	# exit
-	if node.y == 0 and node.x == 5:
+	if node.y == 0 and node.x == floor(mazeWidth / 2):
 		up = true
 	
 	# add corners
