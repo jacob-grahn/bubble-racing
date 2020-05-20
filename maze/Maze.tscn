@@ -26,6 +26,7 @@ position = Vector2( -0.465363, -0.562927 )
 script = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_priority = 100
 
 [node name="BeatBoxer" type="Node" parent="."]
 script = ExtResource( 5 )
