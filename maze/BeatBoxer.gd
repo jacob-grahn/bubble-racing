@@ -58,5 +58,8 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	var timeStr = JavaScript.eval("SoundPlayer.getCurrentTime()")
-	var time = float(timeStr)
-	elapsed = time
+	if (timeStr):
+		var time = float(timeStr)
+		elapsed = time
+	else:
+		elapsed = 0

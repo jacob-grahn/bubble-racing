@@ -19,10 +19,6 @@ config/name="bubble-racing"
 run/main_scene="res://maze/Maze.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-MazeGenerator="*res://maze-generator/MazeGenerator.gd"
-
 [display]
 
 window/size/width=800
