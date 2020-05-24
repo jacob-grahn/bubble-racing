@@ -33,6 +33,5 @@ process_priority = 100
 script = ExtResource( 5 )
 
 [node name="Timer" type="Timer" parent="BeatBoxer"]
-wait_time = 2.0
 autostart = true
 [connection signal="timeout" from="BeatBoxer/Timer" to="BeatBoxer" method="_on_Timer_timeout"]
