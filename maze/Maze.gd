@@ -30,7 +30,6 @@ func _ready():
 	var startX = floor(mazeWidth / 2) * boxWidth * 3
 	var startY = (mazeHeight * boxWidth * 3) - (boxWidth * 2)
 	$Bubble.position = Vector2(startX, startY)
-	$Bubble.targetPosition = $Bubble.position
 	
 	# add finish
 	var finish = Finish.instance()

@@ -5,6 +5,7 @@ class SoundPlayer {
         this.sound.setAttribute("controls", "none")
         this.sound.style.display = "none"
         document.body.appendChild(this.sound)
+        document.addEventListener('click', () => { SoundPlayer.onClick() })
     }
 
     static play (soundUrl) {
@@ -19,6 +20,13 @@ class SoundPlayer {
     static getCurrentTime () {
         return this.sound.currentTime
     }
+
+    static onClick () {
+        if (this.sound.currentTime == 0) {
+            this.sound.play()
+        }
+    }
 }
 
 SoundPlayer.init()
+
