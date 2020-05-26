@@ -11,3 +11,9 @@ func setTile(x, y, value):
 	if !map.get(x):
 		map[x] = {}
 	map[x][y] = value
+
+func setMap(_map):
+	map = _map
+
+func clear():
+	map = {}
