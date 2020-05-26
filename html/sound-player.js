@@ -5,7 +5,7 @@ class SoundPlayer {
         this.sound.setAttribute("controls", "none")
         this.sound.style.display = "none"
         document.body.appendChild(this.sound)
-        document.addEventListener('click', () => { SoundPlayer.onClick() })
+        document.addEventListener('touchstart', () => { SoundPlayer.onTouchStart() })
     }
 
     static play (soundUrl) {
@@ -21,7 +21,7 @@ class SoundPlayer {
         return this.sound.currentTime
     }
 
-    static onClick () {
+    static onTouchStart () {
         if (this.sound.currentTime == 0) {
             this.sound.play()
         }
