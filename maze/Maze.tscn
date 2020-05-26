@@ -25,7 +25,6 @@ texture = ExtResource( 4 )
 
 [node name="Bubble" parent="." instance=ExtResource( 2 )]
 position = Vector2( -0.465363, -0.562927 )
-gravity_scale = -3.0
 script = ExtResource( 3 )
 
 [node name="MouseTracker" type="Node2D" parent="Bubble"]
