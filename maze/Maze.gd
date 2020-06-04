@@ -19,6 +19,8 @@ func _ready():
 	var maze = mazeGenerator.generate(mazeWidth, mazeHeight)
 	maze.shuffle()
 	var map = mapGenerator.generate(maze, mazeWidth)
+	
+	
 
 	#draw map
 	for x in range(mazeWidth * 3):
@@ -50,7 +52,7 @@ func _process(_delta):
 	var y = $Bubble.position.y
 	var brightness = 1 - (y / bottom)
 	$WallModulate.set_color(Color(brightness, brightness, brightness))
-	$ParallaxBackground/BGModulate.set_color(Color(brightness, brightness, brightness))
+	$Background/BGModulate.set_color(Color(brightness, brightness, brightness))
 
 
 func draw_box(x, y):

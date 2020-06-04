@@ -13,7 +13,6 @@ func _ready():
 
 # Move towards target position
 func _on_timeout():
-	print (linear_velocity.length())
 	if (linear_velocity.length() < 50):
 		var move_x = rand_range(-1000, 1000)
 		var move_y = rand_range(-1000, 1000)
