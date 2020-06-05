@@ -17,4 +17,5 @@ func _process(_delta):
 
 # Send updates on an interval
 func _on_interval():
+	var size = get_viewport().size
 	shared_state.set_player_target_position(player_id, target_position)
