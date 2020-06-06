@@ -8,6 +8,7 @@
 [ext_resource path="res://title/Center.gd" type="Script" id=6]
 
 [node name="TitleScreen" type="Node2D"]
+position = Vector2( 0, -3 )
 script = ExtResource( 4 )
 
 [node name="ocean-bg" type="Sprite" parent="."]
@@ -20,11 +21,16 @@ script = ExtResource( 5 )
 position = Vector2( 300, 300 )
 script = ExtResource( 6 )
 
+[node name="Logo" type="Sprite" parent="Center"]
+position = Vector2( 0, -100 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 1 )
+
 [node name="PlayButton" type="TextureButton" parent="Center"]
-margin_left = -110.775
-margin_top = 144.706
-margin_right = 114.225
-margin_bottom = 232.706
+margin_left = -108.925
+margin_top = 195.598
+margin_right = 116.075
+margin_bottom = 283.598
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource( 3 )
 texture_hover = ExtResource( 3 )
@@ -33,7 +39,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="Sprite" parent="Center"]
-position = Vector2( 0, -100 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 1 )
+[node name="SoundToggle" type="CheckButton" parent="Center"]
+margin_left = -6.68024
+margin_top = 102.128
+margin_right = 69.3198
+margin_bottom = 142.128
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenToggle" type="CheckButton" parent="Center"]
+margin_left = -6.60556
+margin_top = 134.589
+margin_right = 69.3944
+margin_bottom = 174.589
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundLabel" type="RichTextLabel" parent="Center"]
+margin_left = -50.3772
+margin_top = 114.954
+margin_right = 26.6228
+margin_bottom = 139.954
+rect_pivot_offset = Vector2( 12.5007, 0 )
+text = "Sound"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenLabel" type="RichTextLabel" parent="Center"]
+margin_left = -76.2859
+margin_top = 148.265
+margin_right = 0.714142
+margin_bottom = 173.265
+rect_pivot_offset = Vector2( 12.5007, 0 )
+text = "Fullscreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}

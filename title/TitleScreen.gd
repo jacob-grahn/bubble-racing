@@ -3,7 +3,18 @@ extends Node2D
 
 func _ready():
 	$Center/PlayButton.connect('button_down', self, '_on_press_play')
-
+	$Center/SoundToggle.connect('toggled', self, '_on_sound_toggled')
+	$Center/FullscreenToggle.connect('toggled', self, '_on_fullscreen_toggled')
 
 func _on_press_play():
+	OS.window_fullscreen = Settings.fullscreen
 	get_tree().change_scene("res://maze/Maze.tscn")
+	
+	
+func _on_sound_toggled(toggled):
+	Settings.sound = toggled
+	
+	
+func _on_fullscreen_toggled(toggled):
+	Settings.fullscreen = toggled
+	

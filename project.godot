@@ -19,6 +19,10 @@ config/name="bubble-racing"
 run/main_scene="res://title/TitleScreen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Settings="*res://Settings.gd"
+
 [display]
 
 window/size/width=600

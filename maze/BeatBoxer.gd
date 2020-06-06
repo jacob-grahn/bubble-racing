@@ -16,7 +16,8 @@ func _ready():
 	JSON_request.connect("request_completed", self, "on_json_request_completed")
 	JSON_request.request(json_url)
 	
-	JavaScript.eval("SoundPlayer.play('" + song_url + "')")
+	if (Settings.sound):
+		JavaScript.eval("SoundPlayer.play('" + song_url + "')")
 	# var OGG_request = HTTPRequest.new()
 	# add_child(OGG_request)
 	# OGG_request.connect("request_completed", self, "on_ogg_request_completed")
