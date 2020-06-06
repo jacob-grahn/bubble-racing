@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://maze/dot.png" type="Texture" id=1]
+[ext_resource path="res://maze/Dot.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Dot" type="Sprite"]
+modulate = Color( 1, 1, 1, 0.486275 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 15, 15 )
+shape = SubResource( 1 )

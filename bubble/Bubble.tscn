@@ -15,6 +15,7 @@ physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 
 [node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 color = Color( 1, 0.964706, 0.894118, 1 )
 energy = 1.25
@@ -27,9 +28,10 @@ shadow_filter = 2
 shadow_filter_smooth = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 3.7, 3.7 )
+scale = Vector2( 1.9, 1.9 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )

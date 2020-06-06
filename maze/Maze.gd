@@ -4,7 +4,8 @@ var Box = preload("../box/Box.tscn")
 var Finish = preload("../finish/Finish.tscn")
 var MazeGenerator = preload("../maze-generator/MazeGenerator.gd")
 var MapGenerator = preload("../maze-generator/MapGenerator.gd")
-var boxScale = 2
+var Dot = preload("Dot.tscn")
+var boxScale = 1.5
 var boxWidth = 100 * boxScale
 var nodeWidth = boxWidth * 3
 var mazeWidth = 5
@@ -27,6 +28,8 @@ func _ready():
 		for y in range(mazeHeight * 3):
 			if map.getTile(x, y):
 				draw_box(x, y)
+			else:
+				draw_dot(x, y)
 	
 	# add player bubble
 	var startX = floor(mazeWidth / 2) * boxWidth * 3
@@ -36,7 +39,7 @@ func _ready():
 	
 	# add finish
 	var finish = Finish.instance()
-	finish.scale = Vector2(4, 4)
+	finish.scale = Vector2(3, 3)
 	finish.position = Vector2(startX + boxWidth, 0)
 	finish.connect("bubble_finished", self, "on_bubble_finished")
 	add_child(finish)
@@ -48,9 +51,11 @@ func on_bubble_finished(bubble: RigidBody2D):
 	
 	
 func _process(_delta):
-	var bottom = mazeHeight * boxWidth * 3
+	var bottom = (mazeHeight - 1) * nodeWidth
 	var y = $Bubble.position.y
 	var brightness = 1 - (y / bottom)
+	if brightness < 0:
+		brightness = 0
 	$WallModulate.set_color(Color(brightness, brightness, brightness))
 	$Background/BGModulate.set_color(Color(brightness, brightness, brightness))
 
@@ -60,3 +65,8 @@ func draw_box(x, y):
 	box.scale = Vector2(boxScale, boxScale)
 	box.position = Vector2(x * boxWidth, y * boxWidth)
 	add_child(box)
+	
+func draw_dot(x, y):
+	var dot = Dot.instance()
+	dot.position = Vector2(x * boxWidth, y * boxWidth)
+	add_child(dot)

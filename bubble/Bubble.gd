@@ -20,8 +20,8 @@ func _process(_delta):
 	
 
 func beat_light():
-	var lightScale = 1 + (get_node("../BeatBoxer").loudness * .005)
-	var bubbleScale = 1 + (get_node("../BeatBoxer").loudness * .001)
+	var lightScale = 0.5 + (get_node("../BeatBoxer").loudness * .006)
+	var bubbleScale = 0.5 + (get_node("../BeatBoxer").loudness * .001)
 	$Light2D.set_scale(Vector2(lightScale, lightScale))
 	$Sprite.set_scale(Vector2(bubbleScale, bubbleScale))
 	
