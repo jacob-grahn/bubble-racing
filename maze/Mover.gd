@@ -3,7 +3,7 @@ extends RigidBody2D
 # variables
 var acceleration = 30
 var linearDamp = 3
-var approachBackoff = 200
+var approachBackoff = 150
 var bodyType = 'mover'
 var target_position = Vector2(0 ,0)
 

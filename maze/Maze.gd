@@ -21,8 +21,6 @@ func _ready():
 	maze.shuffle()
 	var map = mapGenerator.generate(maze, mazeWidth)
 	
-	
-
 	#draw map
 	for x in range(mazeWidth * 3):
 		for y in range(mazeHeight * 3):
@@ -51,7 +49,7 @@ func on_bubble_finished(bubble: RigidBody2D):
 	
 	
 func _process(_delta):
-	var bottom = (mazeHeight - 1) * nodeWidth
+	var bottom = (mazeHeight * nodeWidth) - (boxWidth * 2)
 	var y = $Bubble.position.y
 	var brightness = 1 - (y / bottom)
 	if brightness < 0:
