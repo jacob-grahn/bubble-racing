@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://maze/Maze.gd" type="Script" id=1]
 [ext_resource path="res://bubble/Bubble.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://maze/SharedState.gd" type="Script" id=7]
 [ext_resource path="res://bubble/WanderBubble.gd" type="Script" id=8]
 [ext_resource path="res://maze/BGSprite.gd" type="Script" id=9]
+[ext_resource path="res://floaters.png" type="Texture" id=10]
+[ext_resource path="res://maze/Floaters.gd" type="Script" id=11]
 
 [node name="Maze" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,13 +19,28 @@ script = ExtResource( 1 )
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
 [node name="Background" type="ParallaxBackground" parent="."]
-
-[node name="BGSprite" type="Sprite" parent="Background"]
-texture = ExtResource( 4 )
-centered = false
-script = ExtResource( 9 )
+follow_viewport_enable = true
 
 [node name="BGModulate" type="CanvasModulate" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+z_index = -2
+motion_scale = Vector2( -1, -1 )
+
+[node name="BGSprite" type="Sprite" parent="Background/ParallaxLayer"]
+texture = ExtResource( 4 )
+script = ExtResource( 9 )
+
+[node name="FloaterLayer" type="ParallaxLayer" parent="Background"]
+z_index = -1
+motion_scale = Vector2( 0, 0 )
+
+[node name="Floaters" type="Sprite" parent="Background/FloaterLayer"]
+modulate = Color( 0.975728, 0.976562, 0.94986, 0.392157 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 3000, 3000 )
+script = ExtResource( 11 )
 
 [node name="Bubble" parent="." instance=ExtResource( 2 )]
 position = Vector2( -0.465363, -0.562927 )
@@ -56,5 +73,7 @@ autostart = true
 
 [node name="SharedState" type="Node" parent="."]
 script = ExtResource( 7 )
+
+[node name="Floaters" type="Sprite" parent="."]
 [connection signal="timeout" from="Bubble/MouseTracker/Timer" to="Bubble/MouseTracker" method="_on_interval"]
 [connection signal="timeout" from="BeatBoxer/Timer" to="BeatBoxer" method="_on_Timer_timeout"]

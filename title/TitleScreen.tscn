@@ -11,15 +11,16 @@
 position = Vector2( 0, -3 )
 script = ExtResource( 4 )
 
-[node name="ocean-bg" type="Sprite" parent="."]
+[node name="Center" type="Node2D" parent="."]
+position = Vector2( 300, 300 )
+script = ExtResource( 6 )
+
+[node name="ocean-bg" type="Sprite" parent="Center"]
+position = Vector2( -300, -300 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 2 )
 centered = false
 script = ExtResource( 5 )
-
-[node name="Center" type="Node2D" parent="."]
-position = Vector2( 300, 300 )
-script = ExtResource( 6 )
 
 [node name="Logo" type="Sprite" parent="Center"]
 position = Vector2( 0, -100 )

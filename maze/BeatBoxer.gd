@@ -27,7 +27,7 @@ func _ready():
 	# stream_player.connect("finished", self, "on_audio_finished")
 	
 
-func on_json_request_completed(result, response_code, headers, body):
+func on_json_request_completed(_result, _response_code, _headers, body):
 	var data_parse = JSON.parse(body.get_string_from_utf8())
 	if data_parse.error != OK:
 		return

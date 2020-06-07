@@ -19,7 +19,7 @@ func _on_body_entered(body):
 		target = body
 	
 
-func _process(delta):
+func _process(_delta):
 	# do nothing of not triggered
 	if (!woke):
 		return
