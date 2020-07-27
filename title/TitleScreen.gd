@@ -10,7 +10,7 @@ func _ready():
 
 func _on_press_play():
 	OS.window_fullscreen = Settings.fullscreen
-	get_tree().change_scene("res://maze/Maze.tscn")
+	get_tree().change_scene("res://levels/Levels.tscn")
 	
 	
 func _on_sound_toggled(toggled):
