@@ -7,51 +7,91 @@ func _ready():
 		btn.connect('button_down', self, '_on_press_level_' + str(i))
 	
 func _on_press_level_1():
-	goto_level(1, 3)
+	goto_level({
+		'width': 1,
+		'height': 2
+	})
 	
 func _on_press_level_2():
-	goto_level(2, 4)
+	goto_level({
+		'width': 2,
+		'height': 4
+	})
 	
 func _on_press_level_3():
-	goto_level(3, 5)
+	{
+		'width': 3,
+		'height': 5
+	}
 	
 func _on_press_level_4():
-	goto_level(4, 4)
+	{
+		'width': 4,
+		'height': 4
+	}
 	
 func _on_press_level_5():
-	goto_level(5, 5)
+	{
+		'width': 5,
+		'height': 5
+	}
 	
 func _on_press_level_6():
-	goto_level(6, 6)
+	{
+		'width': 6,
+		'height': 6
+	}
 	
 func _on_press_level_7():
-	goto_level(7, 7)
+	{
+		'width': 7,
+		'height': 7
+	}
 	
 func _on_press_level_8():
-	goto_level(8, 8)
+	{
+		'width': 8,
+		'height': 8
+	}
 	
 func _on_press_level_9():
-	goto_level(9, 9)
+	{
+		'width': 9,
+		'height': 9
+	}
 	
 func _on_press_level_10():
-	goto_level(10, 10)
+	{
+		'width': 10,
+		'height': 10
+	}
 	
 func _on_press_level_11():
-	goto_level(11, 11)
+	{
+		'width': 11,
+		'height': 11
+	}
 	
 func _on_press_level_12():
-	goto_level(12, 12)
+	{
+		'width': 12,
+		'height': 12
+	}
 	
 func _on_press_level_13():
-	goto_level(13, 13)
+	{
+		'width': 13,
+		'height': 13
+	}
 	
 func _on_press_level_14():
-	goto_level(14, 14)
+	{
+		'width': 14,
+		'height': 14
+	}
 	
-func goto_level(w, h):
+func goto_level(levelSettings):
 	print('goto_level')
-	print(w)
-	print(h)
-	Settings.mazeWidth = w
-	Settings.mazeHeight = h
+	print(levelSettings)
+	Settings.levelSettings = levelSettings
 	get_tree().change_scene("res://maze/Maze.tscn")

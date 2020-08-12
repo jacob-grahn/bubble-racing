@@ -16,8 +16,8 @@ var mapGenerator = MapGenerator.new()
 
 func _ready():
 	# grab an initial maze size
-	mazeWidth = Settings.mazeWidth
-	mazeHeight = Settings.mazeHeight
+	mazeWidth = Settings.levelSettings.width
+	mazeHeight = Settings.levelSettings.height
 	
 	# create random maze
 	randomize()
