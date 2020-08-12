@@ -8,6 +8,7 @@ func _ready():
 	$Center/SoundToggle.connect('toggled', self, '_on_sound_toggled')
 	$Center/FullscreenToggle.connect('toggled', self, '_on_fullscreen_toggled')
 
+
 func _on_press_play():
 	OS.window_fullscreen = Settings.fullscreen
 	get_tree().change_scene("res://levels/Levels.tscn")

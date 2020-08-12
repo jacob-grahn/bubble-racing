@@ -36,7 +36,18 @@ z_index = -1
 motion_scale = Vector2( 0, 0 )
 
 [node name="Floaters" type="Sprite" parent="Background/FloaterLayer"]
-modulate = Color( 0.975728, 0.976562, 0.94986, 0.392157 )
+modulate = Color( 0.976471, 0.976471, 0.94902, 0.588235 )
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 3000, 3000 )
+script = ExtResource( 11 )
+
+[node name="FloaterLayer2" type="ParallaxLayer" parent="Background"]
+scale = Vector2( 2, 2 )
+z_index = -1
+
+[node name="Floaters" type="Sprite" parent="Background/FloaterLayer2"]
+modulate = Color( 0.976471, 0.976471, 0.94902, 0.588235 )
 texture = ExtResource( 10 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 3000, 3000 )

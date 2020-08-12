@@ -34,7 +34,7 @@ func _ready():
 				draw_dot(x, y)
 	
 	# add player bubble
-	var startX = floor(mazeWidth / 2) * boxWidth * 3
+	var startX = mazeWidth / 2 * boxWidth * 3 + boxWidth * 2
 	var startY = (mazeHeight * boxWidth * 3) - (boxWidth * 2)
 	$Bubble.position = Vector2(startX, startY)
 	$WanderBubble.position = Vector2(startX, startY)
@@ -42,18 +42,18 @@ func _ready():
 	# add finish
 	var finish = Finish.instance()
 	finish.scale = Vector2(3, 3)
-	finish.position = Vector2(startX + boxWidth, 0)
+	finish.position = Vector2(startX - boxWidth, 0)
 	finish.connect("bubble_finished", self, "on_bubble_finished")
 	add_child(finish)
 
 
 func on_bubble_finished(bubble: RigidBody2D):
 	bubble.finish()
-	var _result = get_tree().reload_current_scene()
+	get_tree().change_scene("res://levels/Levels.tscn")
 	
 	
 func _process(_delta):
-	var bottom = (mazeHeight * nodeWidth) - (boxWidth * 2)
+	var bottom = (mazeHeight * nodeWidth) + (boxWidth * 2)
 	var y = $Bubble.position.y
 	var brightness = 1 - (y / bottom)
 	if brightness < 0:
@@ -67,6 +67,7 @@ func draw_box(x, y):
 	box.scale = Vector2(boxScale, boxScale)
 	box.position = Vector2(x * boxWidth, y * boxWidth)
 	add_child(box)
+	
 	
 func draw_dot(x, y):
 	var dot = Dot.instance()
